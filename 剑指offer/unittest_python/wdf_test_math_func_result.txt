@@ -1,0 +1,20 @@
+test_add (test_math_func.TestMathFunc) ... ok
+test_divide (test_math_func.TestMathFunc)
+Test method divide(a, b) ... ok
+test_minus (test_math_func.TestMathFunc) ... ok
+test_multi (test_math_func.TestMathFunc)
+Test method multi(a, b) ... FAIL
+
+======================================================================
+FAIL: test_multi (test_math_func.TestMathFunc)
+Test method multi(a, b)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\pycharm\万门大学-数据结构\剑指offer\unittest_python\test_math_func.py", line 30, in test_multi
+    self.assertEqual(6, multi(3, 3))  # 错误
+AssertionError: 6 != 9
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)
