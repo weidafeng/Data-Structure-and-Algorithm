@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-#
+#-------------------------------------------------------------------------------
+# Name:         bisect库.py
+# Author:       wdf
+# Date:         12/16/2019
+# IDE：         PyCharm 
+# Parameters:
+#     @param:
+#     @param:
+# Return： 
+#       
+# Description:  
+# Usage：
+#-------------------------------------------------------------------------------
+
+import bisect
+import random
+
+random.seed(1)
+
+print'New Pos Contents'
+print'--- --- --------'
+
+l = []
+for i in range(1, 15):
+ r = random.randint(1, 100)
+ position = bisect.bisect(l, r)
+ bisect.insort(l, r)
+ print'%3d %3d' % (r, position), l
+
+def main():
+    pass
+
+
+if __name__ == '__main__':
+    main()
