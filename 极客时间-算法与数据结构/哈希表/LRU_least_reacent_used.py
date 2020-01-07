@@ -38,7 +38,6 @@ OrderedDict 也是 dict 的子类，其最大特征是，它可以“维护”�
 import collections
 
 class LRUCache:
-
     def __init__(self, capacity=3):
         self.capacity = capacity
         self.queue = collections.OrderedDict()
@@ -46,7 +45,6 @@ class LRUCache:
     def get(self, key):
         if key not in self.queue:
             return None  # 要找的数据不在缓存中返回 None
-
         value = self.queue.pop(key)  # 将命中缓存的数据移除
         self.queue[key] = value  # 将命中缓存的数据重新添加到头部
         return self.queue[key]
@@ -54,11 +52,9 @@ class LRUCache:
     def put(self, key, value):
         if key in self.queue:  # 如果已经在缓存中，则先移除老的数据
             self.queue.pop(key)
-
         elif len(self.queue.items()) == self.capacity: # 如果不在缓存中并且到达最大容量，则把最后的数据淘汰
             self.queue.popitem(last=False) # Last参数为False时，说明其是以队列先进先出方式弹出第一个插入字典的键值对，
             # The pairs are returned in LIFO order if last is true or FIFO order if false.
-
         self.queue[key] = value  # 将新数据添加到头部
 
 
