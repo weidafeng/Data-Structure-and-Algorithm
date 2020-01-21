@@ -114,7 +114,7 @@ class LinkedList(object):
         return cur
 
 
-    # 打印链表
+    # 正序打印链表
     def print_lkst(self):
         node = self.head.next  # 不打印头结点
         # print("head: ",head_node, head_node.data)
@@ -123,6 +123,18 @@ class LinkedList(object):
             node = node.next
         print()
 
+    # 倒序打印链表（不修改链表）
+    def reverse_print_2(self):
+        # 方法二，上面用了堆栈实现，而递归本质上就是一种栈结构
+        cur_node = self.head.next
+        self._reverse_recursive_helper(cur_node)
+
+    # 递归调用的辅助函数
+    # 要想实现倒序打印，则每访问到一个节点时，先递归地打印他的后继节点，再打印当前节点本身
+    def _reverse_recursive_helper(self, cur_node):
+        if cur_node and cur_node.next:
+            self._reverse_recursive_helper(cur_node.next)
+        print(cur_node.data, end=' ')
 
 def main():
     print('测试node：')
