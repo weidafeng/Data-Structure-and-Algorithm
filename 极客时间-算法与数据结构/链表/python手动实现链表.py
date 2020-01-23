@@ -94,25 +94,24 @@ class LinkedList(object):
         return False
 
     # 链表逆序
-    # TODO
     def reverse(self):
-        # node = self.head
-        # while node.next != None: # 找到最后一个节点
-        #     node = node.next
-        # p, q = None, self.head
-        # while q != None:
-        #     tmp = q.next
-        #     q.next = p
-        #     p = q
-        #     q = tmp
-        # self.head = p
-        cur, pre = self.head, None
-        while cur.next != None:
-            cur.next = pre # 指向前一个节点（反转）
-            pre = cur # 向后移，准备处理下一个
-            cur = cur.next # 向后移，准备处理下一个
-        return cur
+        '''
+        三个指针：
+            pre， cur， nxt
+        '''
+        pre = None
+        cur = self.head
+        nxt = None
 
+        while cur != None:
+            nxt = cur.next  # 存储后继节点（防止丢失）
+            if nxt == None:  # 翻转后链表的头结点（原始链表的尾节点）
+                self.head = Node()  # 新建一个空头结点
+                self.head.next = cur  # 头结点指向第一个元素（原始链表的最后一个元素）
+            cur.next = pre  # 翻转（当前节点指向pre）
+            pre = cur  # 向后移
+            cur = nxt  # 向后移
+        # self.head = cur
 
     # 正序打印链表
     def print_lkst(self):
@@ -135,6 +134,7 @@ class LinkedList(object):
         if cur_node and cur_node.next:
             self._reverse_recursive_helper(cur_node.next)
         print(cur_node.data, end=' ')
+
 
 def main():
     print('测试node：')
@@ -189,7 +189,6 @@ def main():
     print(lkst.remove(10))
     lkst.print_lkst()
 
-
     # 新建一个链表
     print("新建一个链表")
     ll = LinkedList()
@@ -201,10 +200,12 @@ def main():
     print('逆序')
     ll.reverse()
     ll.print_lkst()
+    print('------------')
 
     for i in range(10):
         ll.add_first(i)
     ll.print_lkst()
+
 
 if __name__ == '__main__':
     main()
